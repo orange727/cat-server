@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cat-Server</title>
+  <style>
+	html {
+		font-size: 50px;
+	}
+	nav {
+		padding: 0.1px;
+		height: 1.4rem;
+		background-color: #343434;
+	}
+	.logo {
+		height: 1.2rem;
+		display: block;
+		margin: 0.1rem;
+	}
+	.list {
+		list-style-type: katakana;
+		font-size: .4rem;
+	}
+	.content {
+		padding: .4rem 1rem;
+		font-size: .36rem;
+	}
+  </style>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+	<nav>
+		<a href="http://git.sankuai.com/projects/MYFE"><img class="logo" src="/logo.jpg" /></a>
+	</nav>
+	<div class="content">
+		<ul class="list">
+		<% navList.forEach(function(nav) { %>
+			<li><a href=<%- nav %>><%- nav %></a></li>
+		<% }) %>
+		</ul>
+		<div id="__react-content"></div>
+		<pre><code class="html"><%= body %></code></pre>
+	</div>
+</body>
+<script src=<%= script %>></script>
+</html>
