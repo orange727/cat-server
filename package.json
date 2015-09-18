@@ -27,6 +27,7 @@
     "gulp-nodemon": "^2.0.4",
     "insert-module-globals": "^6.5.2",
     "module-deps": "^3.9.1",
-    "syntax-error": "^1.1.4"
+    "syntax-error": "^1.1.4",
+    "watchify": "^3.4.0"
   }
 }

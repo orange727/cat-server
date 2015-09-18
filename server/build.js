@@ -2,16 +2,28 @@ import fs           from 'fs';
 import glob         from 'glob';
 import path         from 'path';
 import babelify     from 'babelify';
+import watchify     from 'watchify';
 import browserify   from 'browserify';
 
 let cwd = process.cwd();
-let entry = {};
 
-glob.sync(path.join(cwd, '/examples/*')).forEach(function(file){
-    let b = browserify();
-    b.add(file)
-    b.transform(babelify)
-    b.bundle()
-        // .on("error", function (err) { console.log("Error : " + err.message); })
-     .pipe(fs.createWriteStream(path.resolve(__dirname, '../build/' + path.parse(file).name + '.js')));
+let b = browserify();
+let w = watchify(b);
+
+let build = (b) => {
+	glob.sync(path.join(cwd, '/examples/*')).forEach(function(file){
+	 console.log(file);
+		b.add(file)
+		b.transform(babelify)
+		b.bundle()
+			// .on("error", function (err) { console.log("Error : " + err.message); })
+		 .pipe(fs.createWriteStream(path.resolve(__dirname, '../build/' + path.parse(file).name + '.js')));
+	});
+}
+
+build(b);
+
+w.on('update', function () {
+	build(w);
 });
+

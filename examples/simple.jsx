@@ -2,14 +2,13 @@ import React from 'react';
 
 class Simple extends React.Component {
 	alert() {
-		alert(22);
+		alert('alert some test text');
 	};
 	render() {
 		return (
-				<div onClick={this.alert}>hhhThis khjfdshais a hjsimple 栗子，哈哈</div>
+				<div onClick={this.alert}>This is a simple example</div>
 			   );
 	}
 };
 
 React.render(<Simple />, document.getElementById('__react-content'));
-// export default Simple;
