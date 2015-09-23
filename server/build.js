@@ -1,29 +1,28 @@
-import fs           from 'fs';
-import glob         from 'glob';
-import path         from 'path';
-import babelify     from 'babelify';
-import watchify     from 'watchify';
-import browserify   from 'browserify';
+var fs           = require('fs');
+var glob         = require('glob');
+var path         = require('path');
+var babelify     = require('babelify');
+var watchify     = require('watchify');
+var browserify   = require('browserify');
 
-let cwd = process.cwd();
-
-let b = browserify();
-let w = watchify(b);
-
-let build = (b) => {
-	glob.sync(path.join(cwd, '/examples/*')).forEach(function(file){
-	 console.log(file);
-		b.add(file)
-		b.transform(babelify)
-		b.bundle()
-			// .on("error", function (err) { console.log("Error : " + err.message); })
-		 .pipe(fs.createWriteStream(path.resolve(__dirname, '../build/' + path.parse(file).name + '.js')));
-	});
+var cwd = process.cwd();
+var build = function (b, file) {
+	console.log("===build===", file);
+	b.add(file)
+	b.transform(babelify.configure({
+	  stage: 0,
+	  }))
+	b.bundle()
+	.on("error", function (err) { console.log("Error : " + err.message); })
+	.pipe(fs.createWriteStream(path.resolve(__dirname, '../build/' + path.parse(file).name + '.js')));
 }
 
-build(b);
+glob.sync(path.join(cwd, '/examples/*')).forEach(function(file){
+	var b = browserify();
+	var w = watchify(b);
+	build(b, file);
 
-w.on('update', function () {
-	build(w);
+	w.on('update', function () {
+		// build(w, file);
+	});
 });
-

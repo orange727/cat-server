@@ -9,7 +9,9 @@
   "bin": {
     "cat-server": "./bin/cat-server.js"
   },
-  "author": "liujing11",
+  "author": {
+    "name": "liujing11"
+  },
   "license": "ISC",
   "devDependencies": {
     "babel": "^5.8.23",
@@ -26,8 +28,20 @@
     "gulp-babel": "^5.2.1",
     "gulp-nodemon": "^2.0.4",
     "insert-module-globals": "^6.5.2",
+    "koa-router": "^5.1.2",
+    "koa-static": "^1.4.9",
+    "marked": "^0.3.5",
     "module-deps": "^3.9.1",
     "syntax-error": "^1.1.4",
     "watchify": "^3.4.0"
+  },
+  "readme": "##ReadME\n\n为react-cat提供Server服务\n\n\n####start server\n\nnpm install cat-server\n\ncat-server\n\n\n####file structure\n\n\t-examples\n\t-src\t     //put your component here\n\t-readme.md\n\t-package.json\n\t\n####examples\n\n\timport React from 'react';\n\n\tclass Example extends React.Component {\n  \t\talert() {\n        \talert('This is a simple example');\n      \t}\n    \trender() {\n        \treturn (<div onClick={this.alert}>This is a simple Example</div>);\n    \t}\n\t};\n\n\tReact.render(<Example />, document.getElementById('__react-content'));\n\t\nThis is importent for rendering examples on page:\n\n`React.render(<Example />, document.getElementById('__react-content'));\n`\n####readme.md\n\nRemember to follow User-Guide of cat-component\n",
+  "readmeFilename": "readme.md",
+  "gitHead": "96702877546031b83343989abb62ebbddcc42b3d",
+  "_id": "cat-server@0.1.1",
+  "_shasum": "b7d635cfd9ccfb78a03832ecc25cac16ede0f999",
+  "_from": "cat-server@>=0.1.0 <0.2.0",
+  "browserify": {
+    "transform": [["babelify", { "experimental": true }]]
   }
 }
