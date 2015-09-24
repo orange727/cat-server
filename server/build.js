@@ -19,10 +19,10 @@ var build = function (b, file) {
 
 glob.sync(path.join(cwd, '/examples/*')).forEach(function(file){
 	var b = browserify();
-	var w = watchify(b);
 	build(b, file);
+	var w = watchify(b);
 
 	w.on('update', function () {
-		// build(w, file);
+		build(w, file);
 	});
 });

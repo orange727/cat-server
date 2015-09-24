@@ -4,7 +4,7 @@
   <title>Cat-Server</title>
   <style>
 	html {
-		font-size: 50px;
+		font-size: 50px !important;
 	}
 	nav {
 		padding: 0.1px;
@@ -26,6 +26,7 @@
 	}
   </style>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
+  <link rel="stylesheet" href="/bootstrap.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
@@ -39,7 +40,7 @@
 			<li><a href=<%- nav %>><%- nav %></a></li>
 		<% }) %>
 		</ul>
-		<div id="__react-content"></div>
+		<div id="__react-content" class="clearfix"></div>
 		<pre><code class="html"><%= body %></code></pre>
 	</div>
 </body>
