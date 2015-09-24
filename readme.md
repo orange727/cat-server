@@ -7,7 +7,7 @@
 
 npm install cat-server
 
-cat-server
+node node_modules/.bin/cat-server
 
 
 ####file structure
@@ -16,7 +16,7 @@ cat-server
 	-src	     //put your component here
 	-readme.md
 	-package.json
-	
+
 ####examples
 
 	import React from 'react';
@@ -31,7 +31,7 @@ cat-server
 	};
 
 	React.render(<Example />, document.getElementById('__react-content'));
-	
+
 This is importent for rendering examples on page:
 
 `React.render(<Example />, document.getElementById('__react-content'));
