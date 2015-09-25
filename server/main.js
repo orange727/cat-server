@@ -5,7 +5,6 @@ var  React        = require('react');
 var  koa          = require('koa');
 var  koarouter    = require('koa-router');
 var  koastatic    = require('koa-static');
-var  marked		  = require('marked');
 
 var app = koa(),
     router = koarouter();
@@ -24,10 +23,10 @@ navList.unshift('/readme');
 //readme
 router.get('/readme', function *(next) {
     var layout = fs.readFileSync(__root('layout.html'));
-    var readme = fs.readFileSync('readme.md'),
+    var readme = fs.readFileSync('readme.md', 'utf8'),
         data = {
             navList: navList,
-            body: marked(readme.toString()),
+            body: readme,
             script: ''
         };
     this.body = _.template(layout)(data);
@@ -38,10 +37,9 @@ router.get('/examples/:example', function *(next) {
     var layout = fs.readFileSync(__root('layout.html'));
     var data = {
         navList: navList,
-        body: '',
+        body: fs.readFileSync(`${process.cwd()}/examples/${this.params.example}.jsx`, 'utf8'),
         script: `/${this.params.example}.js`
     };
-    data.body = fs.readFileSync(`${process.cwd()}/examples/${this.params.example}.jsx`);
     this.body =  _.template(layout)(data);
     //前端渲染而非同构
     // var Example = require(`${process.cwd()}/examples/${this.params.example}.jsx`);
