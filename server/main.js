@@ -38,7 +38,7 @@ router.get('/examples/:example', function *(next) {
     var data = {
         navList: navList,
         body: fs.readFileSync(`${process.cwd()}/examples/${this.params.example}.jsx`, 'utf8'),
-        script: `/${this.params.example}.js`
+        script: this.params.example
     };
     this.body =  _.template(layout)(data);
     //前端渲染而非同构

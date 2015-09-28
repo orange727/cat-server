@@ -40,9 +40,11 @@
 			<li><a href=<%- nav %>><%- nav %></a></li>
 		<% }) %>
 		</ul>
-		<div id="__react-content" class="clearfix"></div>
+        <div id="component-example-<%= script %>" class="clearfix"></div>
 		<pre><code class="javascript hljs"><%- body %></code></pre>
 	</div>
 </body>
-<script src=<%= script %>></script>
+<% if(script !== '') { %>
+    <script src="/<%= script %>.js"></script>
+<% } %>
 </html>
