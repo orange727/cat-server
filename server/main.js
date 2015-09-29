@@ -46,6 +46,9 @@ router.get('/examples/:example', function *(next) {
     // data.body = React.renderToString(<Example />);
 });
 
+//redirect
+router.redirect('/', '/readme');
+
 console.log('build path: %s', __root('build'));
 //process static file service
 app.use(koastatic(__root('build')));
