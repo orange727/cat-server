@@ -20,10 +20,6 @@
 		list-style-type: katakana;
 		font-size: .4rem;
 	}
-	.content {
-		padding: .4rem 1rem;
-		font-size: .36rem;
-	}
   </style>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
   <link rel="stylesheet" href="/bootstrap.css">
@@ -34,17 +30,23 @@
 	<nav>
 		<a href="http://git.sankuai.com/projects/MYFE"><img class="logo" src="/logo.jpg" /></a>
 	</nav>
-	<div class="content">
-		<ul class="list">
-		<% navList.forEach(function(nav) { %>
-			<li><a href=<%- nav %>><%- nav %></a></li>
-		<% }) %>
-		</ul>
-        <div id="component-example-<%= script %>" class="clearfix"></div>
+	<div class="container">
+        <div class="panel panel-default">
+            <ul class="list-group list">
+            <% navList.forEach(function(nav) { %>
+                <li><a href=<%- nav %>><%- nav %></a></li>
+            <% }) %>
+            </ul>
+        </div>
+        <% if(script !== '') { %>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div id="component-example-<%= script %>"></div>
+            </div>
+        </div>
+        <script src="/<%= script %>.js"></script>
+        <% } %>
 		<pre><code class="javascript hljs"><%- body %></code></pre>
 	</div>
 </body>
-<% if(script !== '') { %>
-    <script src="/<%= script %>.js"></script>
-<% } %>
 </html>
