@@ -3,23 +3,11 @@
 <head>
   <title>Cat-Server</title>
   <style>
-	html {
-		font-size: 50px !important;
-	}
-	nav {
-		padding: 0.1px;
-		height: 1.4rem;
-		background-color: #343434;
-	}
-	.logo {
-		height: 1.2rem;
-		display: block;
-		margin: 0.1rem;
-	}
-	.list {
-		list-style-type: katakana;
-		font-size: .4rem;
-	}
+	html {font-size: 50px !important;}
+    body {padding: 10px 0;}
+	.logo {position:fixed; top: 0; right: 0; display: block; margin: 0.1rem;}
+    .logo img {width: 1.8rem;}
+	.list {list-style-type: katakana; font-size: .4rem;}
   </style>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
   <link rel="stylesheet" href="/bootstrap.css">
@@ -27,9 +15,7 @@
   <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
-	<nav>
-		<a href="http://git.sankuai.com/projects/MYFE"><img class="logo" src="/logo.jpg" /></a>
-	</nav>
+    <a href="http://git.sankuai.com/projects/MYFE" class="logo"><img src="/logo.jpg" /></a>
 	<div class="container">
         <div class="panel panel-default">
             <ul class="list-group list">
