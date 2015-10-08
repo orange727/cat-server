@@ -13,7 +13,7 @@ var build = function (b, file) {
 	  stage: 0,
 	  }))
 	b.bundle()
-	.on("error", function (err) { console.log("Error : " + err.message); })
+	.on("error", function (err) { console.log("Babel Error : " + err.message); })
 	.pipe(fs.createWriteStream(path.resolve(__dirname, '../build/' + path.parse(file).name + '.js')));
 }
 
