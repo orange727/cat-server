@@ -1,6 +1,6 @@
 {
   "name": "cat-server",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "cat-component server",
   "main": "index.js",
   "scripts": {

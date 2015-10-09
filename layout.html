@@ -7,7 +7,7 @@
     body {padding: 10px 0;}
 	.logo {position:fixed; top: 0; right: 0; display: block; margin: 0.1rem;}
     .logo img {width: 1.8rem;}
-	.list {list-style-type: katakana; font-size: .4rem;}
+	.list {list-style-position: inside; list-style-type: katakana; font-size: .4rem;}
   </style>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
   <link rel="stylesheet" href="/bootstrap.css">
@@ -18,7 +18,7 @@
     <a href="http://git.sankuai.com/projects/MYFE" class="logo"><img src="/logo.jpg" /></a>
 	<div class="container">
         <div class="panel panel-default">
-            <ul class="list-group list">
+            <ul class="panel-body list-group list">
             <% navList.forEach(function(nav) { %>
                 <li><a href=<%- nav %>><%- nav %></a></li>
             <% }) %>
