@@ -17,7 +17,7 @@ node node_modules/.bin/cat-server
 	-readme.md
 	-package.json
 
-####examples
+####examples/simple.jsx
 
 	import React from 'react';
 
@@ -30,11 +30,11 @@ node node_modules/.bin/cat-server
     	}
 	};
 
-	React.render(<Example />, document.getElementById('__react-content'));
+	React.render(<Example />, document.getElementById('component-example-simple'));
 
 This is importent for rendering examples on page:
 
-`React.render(<Example />, document.getElementById('__react-content'));
+`React.render(<Example />, document.getElementById('component-example-YourFileName'));
 `
 ####readme.md
 
