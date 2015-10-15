@@ -24,6 +24,9 @@
             <% }) %>
             </ul>
         </div>
+        <% if(readme !== '') { %>
+		<pre><code class="javascript hljs"><%= readme %></code></pre>
+        <% } %>
         <% if(script !== '') { %>
         <div class="panel panel-default">
             <div class="panel-body">
@@ -32,7 +35,9 @@
         </div>
         <script src="/<%= script %>.js"></script>
         <% } %>
-		<pre><code class="javascript hljs"><%- body %></code></pre>
+        <% if(code !== '') { %>
+		<pre><code class="javascript hljs"><%- code %></code></pre>
+        <% } %>
 	</div>
 </body>
 </html>
