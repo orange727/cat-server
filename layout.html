@@ -22,6 +22,9 @@
             <% }) %>
             </ul>
         </div>
+        <% if(readme !== '') { %>
+		<pre><code><%= readme %></code></pre>
+        <% } %>
         <% if(script !== '') { %>
         <div class="panel panel-default">
             <div class="panel-body">
@@ -30,7 +33,9 @@
         </div>
         <script src="/<%= script %>.js"></script>
         <% } %>
-		<pre><code><%= body %></code></pre>
+        <% if(code !== '') { %>
+        <pre><code><%= code %></code></pre>
+        <% } %>
 	</div>
     <script src="http://127.0.0.1:35729/livereload.js"></script>
 </body>
