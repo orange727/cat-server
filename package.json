@@ -10,7 +10,7 @@
     "cat-server": "./bin/cat-server.js"
   },
   "author": {
-    "name": "liquanshui"
+    "name": "liujing11"
   },
   "license": "ISC",
   "dependencies": {
