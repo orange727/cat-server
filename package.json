@@ -10,34 +10,24 @@
     "cat-server": "./bin/cat-server.js"
   },
   "author": {
-    "name": "liujing11"
+    "name": "liquanshui"
   },
   "license": "ISC",
-  "devDependencies": {
-    "babel": "^5.8.23",
-    "browser-sync": "^2.9.3",
-    "config": "^1.16.0",
-    "koa": "^1.0.0",
-    "react": "^0.13.3"
-  },
   "dependencies": {
-    "babel": "^5.8.23",
+    "@myfe/myui": "^1.0.8",
     "babelify": "^6.3.0",
-    "browser-pack": "^5.0.1",
-    "browserify": "^11.1.0",
-    "deps-sort": "^1.3.9",
-    "glob": "^5.0.14",
-    "gulp-babel": "^5.2.1",
-    "gulp-nodemon": "^2.0.4",
-    "insert-module-globals": "^6.5.2",
+    "gulp": "^3.9.0",
+    "gulp-browserify": "^0.5.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-rename": "^1.2.2",
+    "highlight": "^0.2.4",
     "koa": "^1.0.0",
     "koa-router": "^5.1.2",
     "koa-static": "^1.4.9",
     "lodash": "^3.10.1",
-    "module-deps": "^3.9.1",
-    "nodemon": "^1.7.0",
-    "syntax-error": "^1.1.4",
-    "watchify": "^3.4.0"
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "run-sequence": "^1.1.4"
   },
   "readme": "##ReadME\n\n为react-cat提供Server服务\n\n\n####start server\n\nnpm install cat-server\n\ncat-server\n\n\n####file structure\n\n\t-examples\n\t-src\t     //put your component here\n\t-readme.md\n\t-package.json\n\t\n####examples\n\n\timport React from 'react';\n\n\tclass Example extends React.Component {\n  \t\talert() {\n        \talert('This is a simple example');\n      \t}\n    \trender() {\n        \treturn (<div onClick={this.alert}>This is a simple Example</div>);\n    \t}\n\t};\n\n\tReact.render(<Example />, document.getElementById('__react-content'));\n\t\nThis is importent for rendering examples on page:\n\n`React.render(<Example />, document.getElementById('__react-content'));\n`\n####readme.md\n\nRemember to follow User-Guide of cat-component\n",
   "readmeFilename": "readme.md",

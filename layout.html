@@ -9,10 +9,8 @@
     .logo img {width: 1.8rem;}
 	.list {list-style-position: inside; list-style-type: katakana; font-size: .4rem;}
   </style>
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
-  <link rel="stylesheet" href="/bootstrap.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
+  <link rel="stylesheet" href="/highlight.css">
+  <link rel="stylesheet" href="/dist/bootstrap.css">
 </head>
 <body>
     <a href="http://git.sankuai.com/projects/MYFE" class="logo"><img src="/logo.jpg" /></a>
@@ -32,7 +30,8 @@
         </div>
         <script src="/<%= script %>.js"></script>
         <% } %>
-		<pre><code class="javascript hljs"><%- body %></code></pre>
+		<pre><code><%= body %></code></pre>
 	</div>
+    <script src="http://127.0.0.1:35729/livereload.js"></script>
 </body>
 </html>

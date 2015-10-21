@@ -1,12 +1,13 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 class Advanced extends React.Component {
-	render() {
-		return (
-				<div>This is an advanced 栗子</div>
-			   );
-	}
-};
+    render() {
+        return (
+            <div>This is an advanced 栗子2</div>
+        )
+    }
+}
 
 // export default Advanced;
-React.render(<Advanced />, document.getElementById('__react-content'));
+ReactDOM.render(<Advanced />, document.getElementById('component-example-advanced'));

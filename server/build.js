@@ -1,28 +1,57 @@
-var fs           = require('fs');
-var glob         = require('glob');
-var path         = require('path');
-var babelify     = require('babelify');
-var watchify     = require('watchify');
-var browserify   = require('browserify');
+var path = require('path');
+var babelify = require('babelify');
+var gulp = require('gulp');
+var browserify = require('gulp-browserify');
+var runSequence = require('run-sequence');
+var rename = require("gulp-rename");
+var livereload = require("gulp-livereload");
 
-var cwd = process.cwd();
-var build = function (b, file) {
-	console.log("===build===", file);
-	b.add(file)
-	b.transform(babelify.configure({
-	  stage: 0,
-	  }))
-	b.bundle()
-	.on("error", function (err) { console.log("Babel Error : " + err.message); })
-	.pipe(fs.createWriteStream(path.resolve(__dirname, '../build/' + path.parse(file).name + '.js')));
-}
+var cwd = process.cwd(),
+    babel = babelify.configure({
+        stage: 0
+    }),
+    paths = {
+        script: path.join(cwd, '/examples/**/*.jsx'),
+        scriptDest: path.resolve(__dirname, '../build/')
+    };
 
-glob.sync(path.join(cwd, '/examples/*')).forEach(function(file){
-	var b = browserify();
-	build(b, file);
-	var w = watchify(b);
-
-	w.on('update', function () {
-		build(w, file);
-	});
+gulp.task('build', function () {
+    gulp.src(paths.script)
+        .pipe(browserify({
+            transform: [babel],
+            debug: true
+        }))
+        .pipe(rename({
+            extname: '.js'
+        }))
+        .pipe(gulp.dest(paths.scriptDest));
 });
+
+
+gulp.task('watch', function () {
+    livereload.listen();
+    console.log('livereload start on 35729');
+    gulp.watch(paths.script, function (e) {
+        if (e.type === 'changed') {
+            gulp.src(e.path)
+                .pipe(browserify({
+                    transform: [babel],
+                    debug: true
+                }))
+                .pipe(rename({
+                    extname: '.js'
+                }))
+                .pipe(gulp.dest(paths.scriptDest))
+                .pipe(livereload());
+        }
+    });
+});
+
+runSequence(['build', 'watch']);
+
+
+
+
+
+
+
