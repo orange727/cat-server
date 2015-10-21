@@ -12,7 +12,8 @@ var cwd = process.cwd(),
     }),
     paths = {
         script: path.join(cwd, '/examples/**/*.jsx'),
-        scriptDest: path.resolve(__dirname, '../build/')
+        scriptDest: path.resolve(__dirname, '../build/'),
+        watch: [path.join(cwd, '/examples/**/*.jsx'), path.join(cwd, '/src/**/*')]
     };
 
 gulp.task('build', function () {
@@ -31,7 +32,7 @@ gulp.task('build', function () {
 gulp.task('watch', function () {
     livereload.listen();
     console.log('livereload start on 35729');
-    gulp.watch(paths.script, function (e) {
+    gulp.watch(paths.watch, function (e) {
         if (e.type === 'changed') {
             gulp.src(e.path)
                 .pipe(browserify({
