@@ -1,23 +1,24 @@
-## ReadME
+# ReadME
 
-为react-cat提供Server服务
+为React Component提供Server服务
 
 
-#### start server
+## start server
 
 npm install cat-server
 
 node node_modules/.bin/cat-server
 
 
-#### file structure
+## file structure
 
+	-assets
 	-examples
 	-src	     //put your component here
 	-readme.md
 	-package.json
 
-#### examples/simple.jsx
+## examples/simple.jsx
 
 	import React from 'react';
 
@@ -36,6 +37,13 @@ This is importent for rendering examples on page:
 
 `React.render(<Example />, document.getElementById('component-example-YourFileName'));
 `
-#### readme.md
+## readme.md
 
 Remember to follow User-Guide of cat-component
+
+## bin
+
+```
+node node_modules/.bin/cat-server   //启动服务在7777端口，并且监听文件改变重新编译后刷新浏览器
+node node_modules/.bin/build        //将src目录下的es6文件编译成es5，目标目录dist
+```
