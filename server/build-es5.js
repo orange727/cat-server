@@ -3,7 +3,6 @@ var gulp = require('gulp');
 var babel = require('gulp-babel');
 var runSequence = require('run-sequence');
 var rename = require("gulp-rename");
-var livereload = require("gulp-livereload");
 
 var cwd = process.cwd(),
     paths = {

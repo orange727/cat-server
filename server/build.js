@@ -1,54 +1,38 @@
 var path = require('path');
-var babelify = require('babelify');
+var webpack = require('gulp-webpack');
+var named = require('vinyl-named');
 var gulp = require('gulp');
-var browserify = require('gulp-browserify');
 var runSequence = require('run-sequence');
 var rename = require("gulp-rename");
-var livereload = require("gulp-livereload");
+var LiveReloadPlugin = require('webpack-livereload-plugin');
 
 var cwd = process.cwd(),
-    babel = babelify.configure({
-        stage: 0
-    }),
     paths = {
         script: path.join(cwd, '/examples/**/*.jsx'),
-        scriptDest: path.resolve(__dirname, '../build/'),
-        watch: [path.join(cwd, '/examples/**/*.jsx'), path.join(cwd, '/src/**/*')]
+        scriptDest: path.resolve(__dirname, '../build/')
+    },
+    webpackConfig = {
+        watch: true,
+        module: {
+            loaders: [
+                { test: /\.(es6|js|jsx)$/, loader: 'babel?stage=0' },
+                { test: /\.less$/, loader: 'style!css!less' }
+            ]
+        },
+        output: {
+            filename: '[name].js'
+        },
+        plugins:[new LiveReloadPlugin()]
     };
 
-gulp.task('build', function () {
+gulp.task('webpack', function(){
     gulp.src(paths.script)
-        .pipe(browserify({
-            transform: [babel],
-            debug: true
-        }))
-        .pipe(rename({
-            extname: '.js'
-        }))
+        .pipe(named())
+        .pipe(webpack(webpackConfig))
         .pipe(gulp.dest(paths.scriptDest));
 });
 
-
-gulp.task('watch', function () {
-    livereload.listen();
-    console.log('livereload start on 35729');
-    gulp.watch(paths.watch, function (e) {
-        if (e.type === 'changed') {
-            gulp.src(e.path)
-                .pipe(browserify({
-                    transform: [babel],
-                    debug: true
-                }))
-                .pipe(rename({
-                    extname: '.js'
-                }))
-                .pipe(gulp.dest(paths.scriptDest))
-                .pipe(livereload());
-        }
-    });
-});
-
-runSequence(['build', 'watch']);
+runSequence(['webpack']);
 
 
 
