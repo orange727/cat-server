@@ -22,6 +22,7 @@ var cwd = process.cwd(),
         output: {
             filename: '[name].js'
         },
+        devtool: 'source-map',
         plugins:[new LiveReloadPlugin()]
     };
 

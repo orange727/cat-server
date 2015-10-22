@@ -1,6 +1,6 @@
 {
-  "name": "@myfe/cat-server-test",
-  "version": "0.1.6",
+  "name": "@myfe/cat-server",
+  "version": "0.2.0",
   "description": "cat-component server",
   "main": "index.js",
   "scripts": {
