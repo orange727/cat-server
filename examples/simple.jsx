@@ -1,14 +1,17 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 class Simple extends React.Component {
-	alert() {
-		alert('alert some test text');
-	};
-	render() {
-		return (
-				<div onClick={this.alert}>This is a simple example</div>
-			   );
-	}
-};
+    alert() {
+        console.log(arguments);
+        alert('alert some test text');
+    }
 
-React.render(<Simple />, document.getElementById('__react-content'));
+    render() {
+        return (
+            <div onClick={this.alert}>This is a simple example</div>
+        );
+    }
+}
+
+ReactDOM.render(<Simple />, document.getElementById('component-example-simple'));

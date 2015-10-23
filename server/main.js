@@ -5,6 +5,7 @@ var  React        = require('react');
 var  koa          = require('koa');
 var  koarouter    = require('koa-router');
 var  koastatic    = require('koa-static');
+var  highlight    = require('highlight').Highlight;
 var  marked       = require('marked');
 
 var app = koa(),
@@ -46,7 +47,7 @@ router.get('/examples/:example', function *(next) {
             navList: navList,
             script: this.params.example,
             readme: marked(readme),
-            code: fs.readFileSync(`${process.cwd()}/examples/${this.params.example}.jsx`, 'utf8')
+            code: highlight(fs.readFileSync(`${process.cwd()}/examples/${this.params.example}.jsx`, 'utf8'))
         };
 
     this.body =  _.template(layout)(data);
@@ -58,11 +59,12 @@ router.get('/examples/:example', function *(next) {
 //redirect
 router.redirect('/', '/readme');
 
-console.log('build path: %s', __root('build'));
 //process static file service
 app.use(koastatic(__root('build')));
 app.use(koastatic(__root('assets')));
+app.use(koastatic(__root('node_modules/bootstrap/dist')));
 
 app.use(router.routes());
 
 app.listen('7777');
+console.log('start server on 7777');

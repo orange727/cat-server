@@ -1,28 +1,43 @@
-var fs           = require('fs');
-var glob         = require('glob');
-var path         = require('path');
-var babelify     = require('babelify');
-var watchify     = require('watchify');
-var browserify   = require('browserify');
+var path = require('path');
+var webpack = require('gulp-webpack');
+var named = require('vinyl-named');
+var gulp = require('gulp');
+var runSequence = require('run-sequence');
+var rename = require("gulp-rename");
+var LiveReloadPlugin = require('webpack-livereload-plugin');
 
-var cwd = process.cwd();
-var build = function (b, file) {
-	console.log("===build===", file);
-	b.add(file)
-	b.transform(babelify.configure({
-	  stage: 0,
-	  }))
-	b.bundle()
-	.on("error", function (err) { console.log("Babel Error : " + err.message); })
-	.pipe(fs.createWriteStream(path.resolve(__dirname, '../build/' + path.parse(file).name + '.js')));
-}
+var cwd = process.cwd(),
+    paths = {
+        script: path.join(cwd, '/examples/**/*.jsx'),
+        scriptDest: path.resolve(__dirname, '../build/')
+    },
+    webpackConfig = {
+        watch: true,
+        module: {
+            loaders: [
+                { test: /\.(es6|js|jsx)$/, loader: 'babel?stage=0' },
+                { test: /\.less$/, loader: 'style!css!less' }
+            ]
+        },
+        output: {
+            filename: '[name].js'
+        },
+        devtool: 'source-map',
+        plugins:[new LiveReloadPlugin()]
+    };
 
-glob.sync(path.join(cwd, '/examples/*')).forEach(function(file){
-	var b = browserify();
-	build(b, file);
-	var w = watchify(b);
-
-	w.on('update', function () {
-		build(w, file);
-	});
+gulp.task('webpack', function(){
+    gulp.src(paths.script)
+        .pipe(named())
+        .pipe(webpack(webpackConfig))
+        .pipe(gulp.dest(paths.scriptDest));
 });
+
+runSequence(['webpack']);
+
+
+
+
+
+
+
