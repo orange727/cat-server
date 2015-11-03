@@ -51,9 +51,6 @@ router.get('/examples/:example', function *(next) {
         };
 
     this.body =  _.template(layout)(data);
-    //前端渲染而非同构
-    // var Example = require(`${process.cwd()}/examples/${this.params.example}.jsx`);
-    // data.body = React.renderToString(<Example />);
 });
 
 //redirect
@@ -66,5 +63,6 @@ app.use(koastatic(__root('node_modules/bootstrap/dist')));
 
 app.use(router.routes());
 
-app.listen('7777');
-console.log('start server on 7777');
+var port = process.env.PORT || 7777;
+app.listen(port);
+console.log('start server on ' + port);
