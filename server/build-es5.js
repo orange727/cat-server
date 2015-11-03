@@ -9,7 +9,7 @@ var cwd = process.cwd(),
     paths = {
         script: [path.join(cwd, '/src/**/*.jsx'), path.join(cwd, '/src/**/*.js')],
         dest: path.join(cwd, '/dist/'),
-        css: [path.join(cwd, '/assets/**/*.less')]
+        css: [path.join(cwd, '/assets/index.less')]
     };
 
 gulp.task('build-es5', function () {
