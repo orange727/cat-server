@@ -1,5 +1,5 @@
 {
-  "name": "@myfe/cat-server",
+  "name": "cat-server",
   "version": "0.2.2",
   "description": "cat-component server",
   "main": "index.js",
