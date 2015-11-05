@@ -12,7 +12,7 @@ var cwd = process.cwd(),
         css: [path.join(cwd, '/assets/index.less')]
     };
 
-gulp.task('build-es5', function () {
+gulp.task('pre-publish', function () {
     gulp.src(paths.script)
         .pipe(babel({stage:0}))
         .pipe(gulp.dest(paths.dest));
@@ -22,7 +22,7 @@ gulp.task('build-es5', function () {
 });
 
 
-runSequence(['build-es5']);
+runSequence(['pre-publish']);
 
 
 

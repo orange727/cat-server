@@ -2,15 +2,22 @@
 
 为React Component提供Server服务
 
+Remember to follow User-Guide of cat-component
 
-## start server
+
+## Start Server
 
 npm install cat-server
 
-node node_modules/.bin/cat-server
+node node_modules/.bin/cat-server   //启动服务(默认端口7777)
 
+## Publish
 
-## file structure
+node node_modules/.bin/pre-publish  //将src目录下的es6文件编译成es5，目标目录dist
+
+npm publish
+
+## File Structure
 
 	-assets
 	-examples
@@ -21,29 +28,20 @@ node node_modules/.bin/cat-server
 ## examples/simple.jsx
 
 	import React from 'react';
+    import ReactDOM from 'react-dom';
 
 	class Example extends React.Component {
   		alert() {
         	alert('This is a simple example');
       	}
     	render() {
-        	return (<div onClick={this.alert}>This is a simple Example</div>);
+        	return <button onClick={this.alert.bind(this)}>This is a simple Example</button>;
     	}
 	};
 
-	React.render(<Example />, document.getElementById('component-example-simple'));
+	ReactDOM.render(<Example />, document.getElementById('component-example-simple'));
 
-This is importent for rendering examples on page:
+This is important for rendering examples on page:
 
 `React.render(<Example />, document.getElementById('component-example-YourFileName'));
 `
-## readme.md
-
-Remember to follow User-Guide of cat-component
-
-## bin
-
-```
-node node_modules/.bin/cat-server   //启动服务在7777端口，并且监听文件改变重新编译后刷新浏览器
-node node_modules/.bin/build        //将src目录下的es6文件编译成es5，目标目录dist
-```
