@@ -59,7 +59,6 @@ router.redirect('/', '/readme');
 //process static file service
 app.use(koastatic(__root('build')));
 app.use(koastatic(__root('assets')));
-app.use(koastatic(__root('node_modules/bootstrap/dist')));
 
 app.use(router.routes());
 
