@@ -3,7 +3,6 @@ var webpack = require('gulp-webpack');
 var named = require('vinyl-named');
 var gulp = require('gulp');
 var runSequence = require('run-sequence');
-var rename = require("gulp-rename");
 var LiveReloadPlugin = require('webpack-livereload-plugin');
 
 var cwd = process.cwd(),
